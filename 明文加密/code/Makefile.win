@@ -1,0 +1,40 @@
+# Project: Data Encryption
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = "Data\ Encryption.o" Feistel.o IP.o Iter.o split.o
+LINKOBJ  = "Data Encryption.o" Feistel.o IP.o Iter.o split.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "Data Encryption.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+"Data\ Encryption.o": Data\ Encryption.cpp
+	$(CPP) -c "Data Encryption.cpp" -o "Data Encryption.o" $(CXXFLAGS)
+
+Feistel.o: Feistel.cpp
+	$(CPP) -c Feistel.cpp -o Feistel.o $(CXXFLAGS)
+
+IP.o: IP.cpp
+	$(CPP) -c IP.cpp -o IP.o $(CXXFLAGS)
+
+Iter.o: Iter.cpp
+	$(CPP) -c Iter.cpp -o Iter.o $(CXXFLAGS)
+
+split.o: split.cpp
+	$(CPP) -c split.cpp -o split.o $(CXXFLAGS)
